@@ -6,5 +6,6 @@ package Golf;
 public class Board {
     public static void main(String[] args) {
         System.out.println("blah");
+        System.out.println("Doge fell asleep.");
     }
 }
