@@ -1,5 +1,7 @@
 package com.apcsa.golf;
 
+import edu.princeton.cs.introcs.StdDraw;
+
 import java.awt.*;
 import java.awt.Dimension;
 import javax.swing.*;
@@ -8,23 +10,21 @@ import java.awt.event.*;
 /**
  * Created by apcsaper5 on 5/4/17.
  */
-public class Board extends JFrame{
-
-    MouseTracker mouse;
+public class Board{
 
     public static void main(String[] args) {
         new Board();
     }
 
     public Board(){
-        this.setSize(new Dimension(1600,900));
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mouse = new MouseTracker();
-        this.addMouseListener(mouse);
-        this.addMouseMotionListener(mouse);
+        StdDraw.setCanvasSize(1600,900);
+        StdDraw.clear(Color.GREEN);
+        StdDraw.setPenRadius(0.05);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.point(0.5, 0.2);
+        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+        StdDraw.line(0.2, 0.5, 0.8, 0.5);
+        StdDraw.show();
 
     }
 

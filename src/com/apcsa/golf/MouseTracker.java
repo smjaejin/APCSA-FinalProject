@@ -9,7 +9,11 @@ import java.awt.event.MouseEvent;
  */
 public class MouseTracker implements MouseInputListener{
 
-    public MouseTracker(){}
+    public MouseTracker(){
+
+
+
+    }
 
 
     public void mousePressed(MouseEvent e){
@@ -30,11 +34,11 @@ public class MouseTracker implements MouseInputListener{
         System.out.println("Mouse exited");
     }
 
-    @Override
+
     public void mouseDragged(MouseEvent e) {
         System.out.println("Mouse dragged");
     }
 
-    @Override
+
     public void mouseMoved(MouseEvent e) {}
 }
