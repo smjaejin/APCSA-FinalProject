@@ -2,7 +2,7 @@
  * Created by Finley on 5/10/17.
  */
 import java.awt.Graphics;
-import edu.princeton.cs.introcs.*
+import edu.princeton.cs.introcs.*;
 
 public class Ball {
     public int posX, posY, width, height;
