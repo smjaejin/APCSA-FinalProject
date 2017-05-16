@@ -1,5 +1,7 @@
 package com.apcsa.golf;
 
+
+import edu.princeton.cs.introcs.Draw;
 import edu.princeton.cs.introcs.StdDraw;
 
 import java.awt.*;
@@ -18,7 +20,8 @@ public class Board{
     }
 
     public Board(){
-        StdDraw.setCanvasSize();
+
+        StdDraw.setCanvasSize(1600, 900);
         StdDraw.clear(lawn = new Color(1,142,14));
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(StdDraw.BLACK);
@@ -31,18 +34,18 @@ public class Board{
 
     }
 
-    public void update(){
-        checkCollision();
-    }
-
-    public void nextHole(int hole){
-        if (hole == 1){
-            StdDraw.clear(lawn);
-            //complete this hole
-        }
-    }
-
-    public void checkCollision(Ball b){
-
-    }
+//    public void update(){
+//        checkCollision();
+//    }
+//
+//    public void nextHole(int hole){
+//        if (hole == 1){
+//            StdDraw.clear(lawn);
+//            //complete this hole
+//        }
+//    }
+//
+//    public void checkCollision(Ball b){
+//
+//    }
 }
