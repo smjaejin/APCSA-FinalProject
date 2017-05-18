@@ -6,6 +6,5 @@ package com.apcsa.golf;
 public class Application {
     public static void main(String[] args) {
         new Board();
-        new Ball();
     }
 }

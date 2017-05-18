@@ -3,16 +3,18 @@ package com.apcsa.golf; /**
  */
 import edu.princeton.cs.introcs.*;
 
+import java.awt.*;
+
 public class Ball {
     public double posX, posY, width, height, radius;
     public double motionX, motionY;
 
     public Ball() {
-        posX = 0.0;
-        posY = 0.0;
+        posX = .5;
+        posY = .85;
         motionX = StdRandom.uniform(-0.015, 0.015);//assigns a random motion
         motionY = StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
-        double radius = 2.0;
+        radius = .02;
     }
 
     // move the ball one step
@@ -25,7 +27,9 @@ public class Ball {
 
     // draw the ball
     public void draw() {
-        StdDraw.filledCircle(posX, posY, radius);
+        StdDraw.setPenColor(Color.WHITE);
+        StdDraw.filledCircle(posX,posY, radius);
+        //StdDraw.filledCircle(.5,.5,.02);
     }
 
 

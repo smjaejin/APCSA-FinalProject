@@ -15,13 +15,15 @@ import java.awt.event.*;
 public class Board{
     Color lawn;
     Color mat;
+    Ball ball;
     public static void main(String[] args) {
         new Board();
     }
 
     public Board(){
 
-        StdDraw.setCanvasSize(1600, 900);
+        StdDraw.setCanvasSize();
+        StdDraw.setScale();
         StdDraw.clear(lawn = new Color(1,142,14));
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(StdDraw.BLACK);
@@ -30,14 +32,38 @@ public class Board{
         StdDraw.filledRectangle(.5,.85, .15, .08);
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
         StdDraw.line(0.2, 0.5, 0.8, 0.5);
+        StdDraw.setPenColor(Color.RED);
+
+        ball = new Ball();
+        ball.draw();
         StdDraw.show();
+        update();
 
     }
 
-//    public void update(){
-//        checkCollision();
-//    }
-//
+    public void update(){
+        //StdDraw.setCanvasSize();
+        StdDraw.setXscale(-1.0, +1.0);
+        StdDraw.setYscale(-1.0, +1.0);
+        StdDraw.enableDoubleBuffering();
+       // StdDraw.setScale();
+        while (true) {
+            StdDraw.clear(lawn);
+            StdDraw.setPenRadius(0.05);
+            StdDraw.setPenColor(StdDraw.BLACK);
+            StdDraw.point(0.5, 0.2);
+            StdDraw.setPenColor(mat);
+            StdDraw.filledRectangle(.5, .85, .15, .08);
+            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+            StdDraw.line(0.2, 0.5, 0.8, 0.5);
+            StdDraw.setPenColor(Color.RED);
+            ball.move();
+            ball.draw();
+            StdDraw.show();
+            StdDraw.pause(20);
+        }
+    }
+
 //    public void nextHole(int hole){
 //        if (hole == 1){
 //            StdDraw.clear(lawn);
