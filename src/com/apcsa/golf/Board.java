@@ -22,16 +22,17 @@ public class Board{
 
     public Board(){
 
+        StdDraw.setXscale(-1, 1);
+        StdDraw.setYscale(-1, 1);
         StdDraw.setCanvasSize();
-        StdDraw.setScale();
         StdDraw.clear(lawn = new Color(1,142,14));
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.point(0.5, 0.2);
+        StdDraw.point(0,-.75);
         StdDraw.setPenColor(mat = new Color(160,82,45));
-        StdDraw.filledRectangle(.5,.85, .15, .08);
+        StdDraw.filledRectangle(-.5,.75,.35,.2);
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-        StdDraw.line(0.2, 0.5, 0.8, 0.5);
+        StdDraw.line(.6,0,-.6,0);
         StdDraw.setPenColor(Color.RED);
 
         ball = new Ball();
@@ -43,20 +44,19 @@ public class Board{
 
     public void update(){
         //StdDraw.setCanvasSize();
-        StdDraw.setXscale(-1.0, +1.0);
-        StdDraw.setYscale(-1.0, +1.0);
+        StdDraw.setXscale(-1, 1);
+        StdDraw.setYscale(-1, 1);
         StdDraw.enableDoubleBuffering();
        // StdDraw.setScale();
         while (true) {
             StdDraw.clear(lawn);
             StdDraw.setPenRadius(0.05);
             StdDraw.setPenColor(StdDraw.BLACK);
-            StdDraw.point(0.5, 0.2);
+            StdDraw.point(0,-.75);
             StdDraw.setPenColor(mat);
-            StdDraw.filledRectangle(.5, .85, .15, .08);
+            StdDraw.filledRectangle(-.35,.75,.35,.2);
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-            StdDraw.line(0.2, 0.5, 0.8, 0.5);
-            StdDraw.setPenColor(Color.RED);
+            StdDraw.line(.6,0,-.6,0);
             ball.move();
             ball.draw();
             StdDraw.show();
