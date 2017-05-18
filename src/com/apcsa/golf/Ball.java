@@ -10,10 +10,10 @@ public class Ball {
     public double motionX, motionY;
 
     public Ball() {
-        posX = .5;
-        posY = .85;
-        motionX = StdRandom.uniform(-0.015, 0.015);//assigns a random motion
-        motionY = StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
+        posX = 0;
+        posY = .75;
+        motionX = 0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
+        motionY = -.02;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;
     }
 
@@ -32,7 +32,17 @@ public class Ball {
         //StdDraw.filledCircle(.5,.5,.02);
     }
 
+    public void gameOverDraw(){
+        StdDraw.setPenColor(Color.BLACK);
+        StdDraw.filledCircle(posX, posY, radius);
+    }
 
+    public double getPosX(){
+        return posX;
+    }
+    public double getPosY(){
+        return posY;
+    }
 
     // test client
     public static void main(String[] args) {

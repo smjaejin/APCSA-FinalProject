@@ -16,6 +16,9 @@ public class Board{
     Color lawn;
     Color mat;
     Ball ball;
+
+    private boolean gameStatus = true;
+
     public static void main(String[] args) {
         new Board();
     }
@@ -48,7 +51,7 @@ public class Board{
         StdDraw.setYscale(-1, 1);
         StdDraw.enableDoubleBuffering();
        // StdDraw.setScale();
-        while (true) {
+        while (gameStatus) {
             StdDraw.clear(lawn);
             StdDraw.setPenRadius(0.05);
             StdDraw.setPenColor(StdDraw.BLACK);
@@ -57,11 +60,31 @@ public class Board{
             StdDraw.filledRectangle(-.35,.75,.35,.2);
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
             StdDraw.line(.6,0,-.6,0);
+
             ball.move();
             ball.draw();
             StdDraw.show();
             StdDraw.pause(20);
+            endOfGame();
+
         }
+    }
+
+    public boolean endOfGame() {
+        if ( Math.abs(ball.getPosX() - 0) < .035  && Math.abs(ball.getPosY() - (-.75) ) < .035 ){
+
+            gameStatus = false;
+            System.out.println("Yay score!");
+            StdDraw.clear(lawn);
+            StdDraw.setPenRadius(0.05);
+            StdDraw.setPenColor(StdDraw.BLACK);
+            StdDraw.point(0,-.75);
+            StdDraw.setPenColor(mat);
+            StdDraw.filledRectangle(-.35,.75,.35,.2);
+            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+            StdDraw.line(.6,0,-.6,0);
+        }
+        return gameStatus;
     }
 
 //    public void nextHole(int hole){
