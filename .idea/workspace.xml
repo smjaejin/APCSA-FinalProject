@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="551828bb-bc01-490e-9224-d17ee68a07cb" name="Default" comment="the hole">
+    <list default="true" id="551828bb-bc01-490e-9224-d17ee68a07cb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/apcsa/golf/Ball.java" afterPath="$PROJECT_DIR$/src/com/apcsa/golf/Ball.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/apcsa/golf/Board.java" afterPath="$PROJECT_DIR$/src/com/apcsa/golf/Board.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -508,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495137122238</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="the hole">
+      <created>1495141621768</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1495141621768</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
