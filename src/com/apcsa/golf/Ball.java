@@ -8,13 +8,16 @@ import java.awt.*;
 public class Ball {
     public double posX, posY, width, height, radius;
     public double motionX, motionY;
+    final double FRICTION, STOPPED;
 
     public Ball() {
         posX = 0;
         posY = .75;
-        motionX = 0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
+        motionX = 0.02;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
         motionY = -.02;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;
+        FRICTION = .99;
+        STOPPED = .0005;
     }
 
     // move the ball one step
@@ -23,6 +26,13 @@ public class Ball {
         if (Math.abs(posY + motionY) + radius > 1.0) motionY = -motionY;//bounces of top or bottom - y velocity reversed
         posX =  posX + motionX;
         posY = posY + motionY;
+        motionX  *= FRICTION;
+        motionY *= FRICTION;
+        if(Math.abs(motionX) < STOPPED && Math.abs(motionY) < STOPPED){
+            motionX = 0;
+            motionY = 0;
+        }
+
     }
 
     // draw the ball
@@ -47,7 +57,7 @@ public class Ball {
     // test client
     public static void main(String[] args) {
 
-        // create and initialize two balls
+        // create and initialize a ball
         Ball b1 = new Ball();
 
 

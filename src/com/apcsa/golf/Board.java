@@ -64,8 +64,9 @@ public class Board{
             ball.move();
             ball.draw();
             StdDraw.show();
-            StdDraw.pause(20);
             endOfGame();
+            StdDraw.pause(20);
+
 
         }
     }
@@ -74,7 +75,7 @@ public class Board{
         if ( Math.abs(ball.getPosX() - 0) < .035  && Math.abs(ball.getPosY() - (-.75) ) < .035 ){
 
             gameStatus = false;
-            System.out.println("Yay score!");
+            System.out.println("Hole completed.");
             StdDraw.clear(lawn);
             StdDraw.setPenRadius(0.05);
             StdDraw.setPenColor(StdDraw.BLACK);
