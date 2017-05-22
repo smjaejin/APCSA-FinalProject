@@ -75,7 +75,16 @@ public class Ball {
             StdDraw.pause(20);
         }
     }
+    public void swing(double xRelease, double yRelease){
+        double powScale = .001;
+        double xDistance,yDistance;
+        xDistance=xRelease-posX;
+        yDistance=yRelease-posY;
+        motionX=powScale*xDistance;
+        motionY=powScale*yDistance;
+    }
 }
+
 //
 //    public void update()
 //    {
