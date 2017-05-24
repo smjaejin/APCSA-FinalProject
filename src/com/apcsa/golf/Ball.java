@@ -9,15 +9,18 @@ public class Ball {
     public double posX, posY, width, height, radius;
     public double motionX, motionY;
     final double FRICTION, STOPPED;
+    public double hX,hY;
 
     public Ball() {
-        posX = 0;
-        posY = .75;
-        motionX = 0.02;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
-        motionY = -.02;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
+        posX = 0.0;
+        posY = 0.75;
+        motionX = +0.015;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
+        motionY = -0.015;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;
-        FRICTION = .99;
+        FRICTION = .989;
         STOPPED = .0005;
+        hX = 0;
+        hY= -.75;
     }
 
     // move the ball one step
@@ -44,7 +47,7 @@ public class Ball {
 
     public void gameOverDraw(){
         StdDraw.setPenColor(Color.BLACK);
-        StdDraw.filledCircle(posX, posY, radius);
+        StdDraw.filledCircle(hX, hY, radius);
     }
 
     public double getPosX(){
@@ -52,6 +55,22 @@ public class Ball {
     }
     public double getPosY(){
         return posY;
+    }
+
+    public double getMotionX() {
+        return motionX;
+    }
+
+    public double getMotionY() {
+        return motionY;
+    }
+
+    public void setMotionX(double motionX) {
+        this.motionX = motionX;
+    }
+
+    public void setMotionY(double motionY) {
+        this.motionY = motionY;
     }
 
     // test client

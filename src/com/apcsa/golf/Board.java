@@ -16,6 +16,7 @@ public class Board{
     Color lawn;
     Color mat;
     Ball ball;
+    Wall wall;
 
     private boolean gameStatus = true;
 
@@ -35,8 +36,8 @@ public class Board{
         StdDraw.setPenColor(mat = new Color(160,82,45));
         StdDraw.filledRectangle(-.5,.75,.35,.2);
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-        StdDraw.line(.6,0,-.6,0);
-        StdDraw.setPenColor(Color.RED);
+       // StdDraw.line(.6,0,-.6,0);
+        wall = new Wall(0,0,.8,.05);
 
         ball = new Ball();
         ball.draw();
@@ -59,8 +60,10 @@ public class Board{
             StdDraw.setPenColor(mat);
             StdDraw.filledRectangle(-.35,.75,.35,.2);
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-            StdDraw.line(.6,0,-.6,0);
+            //StdDraw.line(.6,0,-.6,0);
 
+            wall.draw();
+            wall.interact(ball);
             ball.move();
             ball.draw();
             StdDraw.show();
@@ -84,6 +87,7 @@ public class Board{
             StdDraw.filledRectangle(-.35,.75,.35,.2);
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
             StdDraw.line(.6,0,-.6,0);
+            ball.gameOverDraw();
         }
         return gameStatus;
     }
