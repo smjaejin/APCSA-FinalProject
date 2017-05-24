@@ -14,10 +14,10 @@ public class Ball {
     public Ball() {
         posX = 0.0;
         posY = 0.75;
-        motionX = +0.015;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
-        motionY = -0.015;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
+        motionX = 0.029;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
+        motionY = 0.029;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;
-        FRICTION = .989;
+        FRICTION = 1;//.989;
         STOPPED = .0005;
         hX = 0;
         hY= -.75;
@@ -40,14 +40,26 @@ public class Ball {
 
     // draw the ball
     public void draw() {
-        StdDraw.setPenColor(Color.WHITE);
+        StdDraw.setPenColor(StdDraw.WHITE);
         StdDraw.filledCircle(posX,posY, radius);
         //StdDraw.filledCircle(.5,.5,.02);
     }
 
     public void gameOverDraw(){
-        StdDraw.setPenColor(Color.BLACK);
+        StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.filledCircle(hX, hY, radius);
+    }
+
+    public void calculateMotion(Ball b){
+        double motX = 0, motY = 0;
+        while(StdDraw.mousePressed() && (b.getMotionX()==0 && b.getMotionY() ==0)){
+            motX = -(b.getMotionX() - (b.getPosX() - StdDraw.mouseX()));
+            motY = -(b.getMotionY() - (b.getPosY() - StdDraw.mouseY()));
+        }
+        if(motX != 0 || motY != 0){
+            motionX = motX *.05;
+            motionY = motY *.05;
+        }
     }
 
     public double getPosX(){
@@ -56,19 +68,15 @@ public class Ball {
     public double getPosY(){
         return posY;
     }
-
     public double getMotionX() {
         return motionX;
     }
-
     public double getMotionY() {
         return motionY;
     }
-
     public void setMotionX(double motionX) {
         this.motionX = motionX;
     }
-
     public void setMotionY(double motionY) {
         this.motionY = motionY;
     }
@@ -95,32 +103,7 @@ public class Ball {
         }
     }
 }
-//
-//    public void update()
-//    {
-//        if(checkCollision()==1)
-//        {
-//            this.motionX = 1;
-//            this.motionY =
-//        }
-//
-//    }
-//    //this might go in the board class
-//    public int checkCollision() {
-//        if(posY > //get board height || posY < 0 ) {
-//            if (posX > //get board width || posX < 0) {
-//                return 1//has collided with a wall
-//            }
-//        }
-//        return 0;//has not collided with a wall
-//    }
-//
-//    public void render(Graphics g)
-//    {
-//        g.setColor(Color.BLACK);
-//        g.fillOval(posX,posY,width,height);
-//    }
-//}
+
 
 
 
