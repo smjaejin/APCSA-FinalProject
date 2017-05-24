@@ -1,7 +1,7 @@
 package com.apcsa.golf; /**
  * Created by Finley on 5/10/17.
  */
-import edu.princeton.cs.introcs.*;
+import edu.princeton.cs.introcs.StdDraw;
 
 import java.awt.*;
 
@@ -9,29 +9,26 @@ public class Ball {
     public double posX, posY, width, height, radius;
     public double motionX, motionY;
     final double FRICTION, STOPPED;
-    public double hX,hY;
 
     public Ball() {
-        posX = 0.0;
-        posY = 0.75;
-        motionX = +0.015;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
-        motionY = -0.015;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
+        posX = 0;
+        posY = .75;
+        motionX = 0.0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
+        motionY = 0.0;//StdRandom.uniform(-0.015, 0.015);
         radius = .02;
-        FRICTION = .989;
+        FRICTION = .99;
         STOPPED = .0005;
-        hX = 0;
-        hY= -.75;
     }
 
     // move the ball one step
     public void move() {
         if (Math.abs(posX + motionX) + radius > 1.0) motionX = -motionX;//bounces of either side - x velocity reversed
         if (Math.abs(posY + motionY) + radius > 1.0) motionY = -motionY;//bounces of top or bottom - y velocity reversed
-        posX =  posX + motionX;
+        posX = posX + motionX;
         posY = posY + motionY;
-        motionX  *= FRICTION;
+        motionX *= FRICTION;
         motionY *= FRICTION;
-        if(Math.abs(motionX) < STOPPED && Math.abs(motionY) < STOPPED){
+        if (Math.abs(motionX) < STOPPED && Math.abs(motionY) < STOPPED) {
             motionX = 0;
             motionY = 0;
         }
@@ -41,86 +38,50 @@ public class Ball {
     // draw the ball
     public void draw() {
         StdDraw.setPenColor(Color.WHITE);
-        StdDraw.filledCircle(posX,posY, radius);
-        //StdDraw.filledCircle(.5,.5,.02);
+        StdDraw.filledCircle(posX, posY, radius);
     }
 
-    public void gameOverDraw(){
-        StdDraw.setPenColor(Color.BLACK);
-        StdDraw.filledCircle(hX, hY, radius);
+   public void gameOverDraw() {
+
+       posX = 0;
+       posY = -.75;
+       draw();
+       StdDraw.setPenColor(Color.BLACK);
+       StdDraw.filledCircle(posX, posY, radius+.01);
     }
 
-    public double getPosX(){
+    public double getPosX() {
         return posX;
     }
-    public double getPosY(){
+
+    public double getPosY() {
         return posY;
     }
 
-    public double getMotionX() {
-        return motionX;
+    public double getMotionX(){return motionX;}
+
+    public double getMotionY(){return motionY;}
+
+    public double getRadius() {
+        return radius;
     }
 
-    public double getMotionY() {
-        return motionY;
-    }
+    public void calculateMotion(Ball b){
+        double xMot = 0, yMot=0;
 
-    public void setMotionX(double motionX) {
-        this.motionX = motionX;
-    }
-
-    public void setMotionY(double motionY) {
-        this.motionY = motionY;
-    }
-
-    // test client
-    public static void main(String[] args) {
-
-        // create and initialize a ball
-        Ball b1 = new Ball();
-
-
-        // animate them
-        StdDraw.setXscale(-1.0, +1.0);
-        StdDraw.setYscale(-1.0, +1.0);
-        StdDraw.enableDoubleBuffering();
-
-        while (true) {
-            StdDraw.clear(StdDraw.GRAY);
-            StdDraw.setPenColor(StdDraw.BLACK);
-            b1.move();
-            b1.draw();
-            StdDraw.show();
-            StdDraw.pause(20);
+        while(StdDraw.mousePressed() == true) {
+            xMot = StdDraw.mouseX() ;
+            yMot = StdDraw.mouseY() ;
         }
+        b.assignMotion(xMot, yMot);
+    }
+
+    public void assignMotion(double x, double y){
+        motionX = x;
+        motionY = y;
     }
 }
-//
-//    public void update()
-//    {
-//        if(checkCollision()==1)
-//        {
-//            this.motionX = 1;
-//            this.motionY =
-//        }
-//
-//    }
-//    //this might go in the board class
-//    public int checkCollision() {
-//        if(posY > //get board height || posY < 0 ) {
-//            if (posX > //get board width || posX < 0) {
-//                return 1//has collided with a wall
-//            }
-//        }
-//        return 0;//has not collided with a wall
-//    }
-//
-//    public void render(Graphics g)
-//    {
-//        g.setColor(Color.BLACK);
-//        g.fillOval(posX,posY,width,height);
-//    }
-//}
+
 
 
 

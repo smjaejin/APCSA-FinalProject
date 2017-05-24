@@ -16,9 +16,8 @@ public class Board{
     Color lawn;
     Color mat;
     Ball ball;
-    Wall wall;
 
-    private boolean gameStatus = true;
+    public boolean gameStatus = true;
 
     public static void main(String[] args) {
         new Board();
@@ -36,8 +35,8 @@ public class Board{
         StdDraw.setPenColor(mat = new Color(160,82,45));
         StdDraw.filledRectangle(-.5,.75,.35,.2);
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-       // StdDraw.line(.6,0,-.6,0);
-        wall = new Wall(0,0,.8,.05);
+        StdDraw.line(.6,0,-.6,0);
+        StdDraw.setPenColor(Color.RED);
 
         ball = new Ball();
         ball.draw();
@@ -60,11 +59,9 @@ public class Board{
             StdDraw.setPenColor(mat);
             StdDraw.filledRectangle(-.35,.75,.35,.2);
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-            //StdDraw.line(.6,0,-.6,0);
-
-            wall.draw();
-            wall.interact(ball);
+            StdDraw.line(.6,0,-.6,0);
             ball.move();
+            ball.calculateMotion(ball);
             ball.draw();
             StdDraw.show();
             endOfGame();
@@ -72,7 +69,17 @@ public class Board{
 
 
         }
+        ball.gameOverDraw();
+        System.out.print("end");
+        StdDraw.show();
+        //StdDraw.clear(lawn);
     }
+
+//    public void gameOverDraw() {
+//        //StdDraw.setPenColor(Color.BLACK);
+//        //StdDraw.filledCircle(ball.getPosX(), ball.getPosY(), ball.getRadius());
+//        ball.show();
+//    }
 
     public boolean endOfGame() {
         if ( Math.abs(ball.getPosX() - 0) < .035  && Math.abs(ball.getPosY() - (-.75) ) < .035 ){
@@ -88,7 +95,12 @@ public class Board{
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
             StdDraw.line(.6,0,-.6,0);
             ball.gameOverDraw();
+
         }
+        return gameStatus;
+    }
+
+    public boolean returnGameStatus(){
         return gameStatus;
     }
 
