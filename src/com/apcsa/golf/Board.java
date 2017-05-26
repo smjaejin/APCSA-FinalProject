@@ -63,9 +63,10 @@ public class Board{
             ball.move();
             ball.calculateMotion(ball);
             ball.draw();
+            ball.calculateMotion(ball);
             StdDraw.show();
-            endOfGame();
-            StdDraw.pause(20);
+           //endOfGame();
+            StdDraw.pause(15);
 
 
         }

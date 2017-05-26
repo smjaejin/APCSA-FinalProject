@@ -22,10 +22,10 @@ public class Wall extends Obstacle{
     }
 
     void interact(Ball b){
-        if ((b.getPosX() >= -halfWidth+.02 && b.getPosX() <=halfWidth+.02) && b.getPosY() >= -halfHeight+.02 && b.getPosY() <= halfHeight+.02 && Math.abs(b.getPosY())>x1+halfHeight){
+        if ((b.getPosX() >= -halfWidth-.02 && b.getPosX() <=halfWidth+.02) && b.getPosY() >= -halfHeight-.02 && b.getPosY() <= halfHeight+.02 && Math.abs(b.getPosY())>=x1+halfHeight){
             b.setMotionY(b.getMotionY()*-1);
         }
-        if ((b.getPosX() >= -halfWidth+.02 && b.getPosX() <=halfWidth+.02) && b.getPosY() >= -halfHeight+.02 && b.getPosY() <= halfHeight+.02 && Math.abs(b.getPosX())>x1+halfWidth){
+        if ((b.getPosX() >= -halfWidth-.02 && b.getPosX() <=halfWidth+.02) && b.getPosY() >= -halfHeight-.02 && b.getPosY() <= halfHeight+.02 && Math.abs(b.getPosX())>=x1+halfWidth){
             b.setMotionX(b.getMotionX()*-1);
         }
     }
