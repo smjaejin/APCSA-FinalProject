@@ -101,6 +101,10 @@ public class Ball {
         this.motionY = motionY;
     }
 
+    public void printCoordinates(){
+        System.out.println(  "Position: (" + getPosX()+ "," + getPosY() + ")" );
+    }
+
     // test client
     public static void main(String[] args) {
 

@@ -62,6 +62,8 @@ public class Board{
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
             //StdDraw.line(.6,0,-.6,0);
 
+            ball.printCoordinates();
+
             wall.draw();
             wall.interact(ball);
             ball.move();
