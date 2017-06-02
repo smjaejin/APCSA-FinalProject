@@ -69,7 +69,7 @@ public class Board{
             ball.draw();
             ball.swing(ball);
             StdDraw.show();
-            endOfGame();
+            //endOfGame();
             StdDraw.pause(15);
 
 
