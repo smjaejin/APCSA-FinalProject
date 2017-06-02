@@ -38,7 +38,6 @@ public class Board{
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
        // StdDraw.line(.6,0,-.6,0);
         wall = new Wall(0,0,.8,.05);
-
         ball = new Ball();
         ball.draw();
         StdDraw.show();
@@ -60,9 +59,9 @@ public class Board{
             StdDraw.setPenColor(mat);
             StdDraw.filledRectangle(-.35,.75,.35,.2);
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-            //StdDraw.line(.6,0,-.6,0);
 
-            ball.printCoordinates();
+
+            //ball.printCoordinates();
 
             wall.draw();
             wall.interact(ball);
@@ -70,7 +69,7 @@ public class Board{
             ball.draw();
             ball.swing(ball);
             StdDraw.show();
-           //endOfGame();
+            endOfGame();
             StdDraw.pause(15);
 
 
