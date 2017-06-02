@@ -46,19 +46,19 @@ public class Wall extends Obstacle {
             b.setMotionY(-b.getMotionY());
         }
         if (checkTop(b)) {
-            Point2D.Double p = new Point2D.Double((halfHeight + b.radius - y1) * slopeI + x1, halfHeight + b.radius);
+            Point2D.Double p = new Point2D.Double((halfHeight + b.radius - y1) * slopeI + x1, halfHeight + b.radius+yB);
             System.out.println("top");
             b.setPos(p);
             b.setMotionY(b.getMotionY() * -1);
         }
         else if (checkBottom(b)) {
-            Point2D.Double p = new Point2D.Double((-halfHeight - b.radius - y1) * -slopeI + x1, -halfHeight - b.radius);
+            Point2D.Double p = new Point2D.Double((-halfHeight - b.radius - y1) * -slopeI + x1, -halfHeight - b.radius+yB);
             b.setPos(p);
             System.out.println("bot");
             b.setMotionY(b.getMotionY() * -1);
         }
         else if (checkRight(b) ){
-            Point2D.Double p = new Point2D.Double((halfWidth - b.radius - y1) * slopeI + x1, halfWidth + b.radius);
+            Point2D.Double p = new Point2D.Double((halfWidth - b.radius - y1) * slopeI + x1, halfWidth + b.radius +yB);
             b.setPos(p);
             System.out.println("right");
             b.setMotionX(b.getMotionX() * -1);
@@ -93,5 +93,10 @@ public class Wall extends Obstacle {
         double x1 = b.nextPosition().getX();
         double y1 = b.nextPosition().getY();
         return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && x1 <= xB - halfWidth;
+    }
+    boolean checkInside(Ball b){
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
+        return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB));
     }
 }
