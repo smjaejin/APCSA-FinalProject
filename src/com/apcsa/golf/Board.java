@@ -59,7 +59,7 @@ public class Board{
             StdDraw.setPenColor(mat);
             StdDraw.filledRectangle(-.35,.75,.35,.2);
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-            //StdDraw.line(.6,0,-.6,0);
+
 
             //ball.printCoordinates();
 
@@ -69,7 +69,7 @@ public class Board{
             ball.draw();
             ball.swing(ball);
             StdDraw.show();
-           //endOfGame();
+            endOfGame();
             StdDraw.pause(15);
 
 

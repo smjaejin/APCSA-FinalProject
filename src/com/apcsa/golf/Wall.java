@@ -47,22 +47,26 @@ public class Wall extends Obstacle {
         }
         if (checkTop(b)) {
             Point2D.Double p = new Point2D.Double((halfHeight + b.radius - y1) * slopeI + x1, halfHeight + b.radius);
+            System.out.println("top");
             b.setPos(p);
             b.setMotionY(b.getMotionY() * -1);
         }
         else if (checkBottom(b)) {
             Point2D.Double p = new Point2D.Double((-halfHeight - b.radius - y1) * -slopeI + x1, -halfHeight - b.radius);
             b.setPos(p);
+            System.out.println("bot");
             b.setMotionY(b.getMotionY() * -1);
         }
         else if (checkRight(b) ){
             Point2D.Double p = new Point2D.Double((halfWidth - b.radius - y1) * slopeI + x1, halfWidth + b.radius);
             b.setPos(p);
+            System.out.println("right");
             b.setMotionX(b.getMotionX() * -1);
         }
         else if (checkLeft(b)) {
             Point2D.Double p = new Point2D.Double((-halfWidth - b.radius - y1) * -slopeI + x1, -halfWidth - b.radius);
             b.setPos(p);
+            System.out.println("left");
             b.setMotionX(b.getMotionX() * -1);
         }
 
