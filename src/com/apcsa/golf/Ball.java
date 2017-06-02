@@ -4,6 +4,7 @@ package com.apcsa.golf; /**
 import edu.princeton.cs.introcs.*;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Ball {
     public double posX, posY, width, height, radius;
@@ -11,11 +12,11 @@ public class Ball {
     final double FRICTION, STOPPED;
     public double hX,hY;
 
-    public Ball() {
-        posX = 0.0;
-        posY = 0.75;
-        motionX = 0.09;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
-        motionY = 0.09;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
+    public Ball(double x, double y) {
+        posX = x;
+        posY = y;
+        motionX = 0.0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
+        motionY = 0.0;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;
         FRICTION = 1;//.989;
         STOPPED = .0005;
@@ -50,7 +51,7 @@ public class Ball {
         StdDraw.filledCircle(hX, hY, radius);
     }
 
-    public void calculateMotion(Ball b){
+    public void swing(Ball b){
         double motX = 0, motY = 0;
         while(StdDraw.mousePressed() && (b.getMotionX()==0 && b.getMotionY() ==0)){
             motX = -(b.getMotionX() - (b.getPosX() - StdDraw.mouseX()));
@@ -62,9 +63,28 @@ public class Ball {
         }
     }
 
+    public void setPos(Point2D.Double p){
+        posX = p.getX();
+        posY = p.getY();
+    }
+
+    public Point2D.Double nextPosition(){
+        Point2D.Double p = new Point2D.Double(posX + motionX, posY +motionY);
+        return p;
+    }
+
     public double getPosX(){
         return posX;
     }
+
+    public void setPosX(double posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(double posY) {
+        this.posY = posY;
+    }
+
     public double getPosY(){
         return posY;
     }
@@ -79,6 +99,10 @@ public class Ball {
     }
     public void setMotionY(double motionY) {
         this.motionY = motionY;
+    }
+
+    public void printCoordinates(){
+        System.out.println(  "Position: (" + getPosX()+ "," + getPosY() + ")" );
     }
 
     // test client
