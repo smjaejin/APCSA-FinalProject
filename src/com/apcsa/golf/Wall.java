@@ -29,22 +29,22 @@ public class Wall extends Obstacle {
         double y1 = b.nextPosition().getY();
         double slopeI = b.getMotionX() / b.getMotionY();
 
-//        if (checkTop(b)&&checkRight(b)){
-//            b.setMotionX(-b.getMotionX());
-//            b.setMotionY(-b.getMotionY());
-//        }
-//        else if (checkTop(b)&&checkLeft(b)){
-//            b.setMotionX(-b.getMotionX());
-//            b.setMotionY(-b.getMotionY());
-//        }
-//        else if (checkBottom(b)&&checkRight(b)){
-//            b.setMotionX(-b.getMotionX());
-//            b.setMotionY(-b.getMotionY());
-//        }
-//        else if (checkBottom(b)&&checkLeft(b)){
-//            b.setMotionX(-b.getMotionX());
-//            b.setMotionY(-b.getMotionY());
-//        }
+        if (checkTop(b)&&checkRight(b)){
+            b.setMotionX(-b.getMotionX());
+            b.setMotionY(-b.getMotionY());
+        }
+        else if (checkTop(b)&&checkLeft(b)){
+            b.setMotionX(-b.getMotionX());
+            b.setMotionY(-b.getMotionY());
+        }
+        else if (checkBottom(b)&&checkRight(b)){
+            b.setMotionX(-b.getMotionX());
+            b.setMotionY(-b.getMotionY());
+        }
+        else if (checkBottom(b)&&checkLeft(b)){
+            b.setMotionX(-b.getMotionX());
+            b.setMotionY(-b.getMotionY());
+        }
         if (checkTop(b)) {
             Point2D.Double p = new Point2D.Double((halfHeight + b.radius - y1) * slopeI + x1, halfHeight + b.radius);
             b.setPos(p);
@@ -69,25 +69,25 @@ public class Wall extends Obstacle {
     }
 
     boolean checkTop(Ball b) {
-        if ((((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && y1 >= yB + halfHeight))
-            System.out.println("top true");
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
         return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && y1 >= yB + halfHeight;
     }
 
     boolean checkBottom(Ball b) {
-        if ((((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && y1 <= yB - halfHeight))
-            System.out.println("bot");
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
         return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && y1 <= yB - halfHeight;
     }
     boolean checkRight(Ball b) {
-        if((((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && x1 >= xB + halfWidth))
-            System.out.println("Right");
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
         return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && x1 >= xB + halfWidth;
     }
 
     boolean checkLeft(Ball b) {
-        if ((((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && x1 <= xB - halfWidth))
-            System.out.println("Left");
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
         return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && x1 <= xB - halfWidth;
     }
 }

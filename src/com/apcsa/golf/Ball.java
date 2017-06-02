@@ -15,7 +15,7 @@ public class Ball {
     public Ball() {
         posX = 0.0;
         posY = 0.75;
-        motionX = 0.01;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
+        motionX = 0.015;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
         motionY = 0.015;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;
         FRICTION = 1;//.989;
