@@ -12,9 +12,7 @@ public class Ball {
     final double FRICTION, STOPPED;
     public double hX,hY;
 
-    public Ball(double x, double y) {
-        posX = x;
-        posY = y;
+    public Ball() {
         motionX = 0.0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
         motionY = 0.0;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;

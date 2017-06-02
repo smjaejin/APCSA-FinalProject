@@ -14,11 +14,10 @@ import java.awt.event.*;
  */
 public class Board{
     Color lawn;
-    Color mat;
     Ball ball;
     Wall wall;
-
-    private boolean gameStatus = true;
+    Hole hole;
+    Mat mat;
 
     public static void main(String[] args) {
         new Board();
@@ -29,17 +28,18 @@ public class Board{
         StdDraw.setXscale(-1, 1);
         StdDraw.setYscale(-1, 1);
         StdDraw.setCanvasSize();
-        StdDraw.clear(lawn = new Color(1,142,14));
-        StdDraw.setPenRadius(0.05);
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.point(0,-.75);
-        StdDraw.setPenColor(mat = new Color(160,82,45));
-        StdDraw.filledRectangle(-.5,.75,.35,.2);
+        StdDraw.clear(lawn = new Color(46, 93, 0));
+
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-       // StdDraw.line(.6,0,-.6,0);
-        wall = new Wall(0,0,.8,.05);
+        StdDraw.line(.6,0,-.6,0);
+        StdDraw.setPenColor(Color.RED);
+        mat = new Mat(0, .6);
+        wall = new Wall(0,-.75,.6,.08);
+        hole = new Hole(.75,-.75);
         ball = new Ball();
+        mat.assignBallStart(ball);
         ball.draw();
+        hole.draw();
         StdDraw.show();
         update();
 
@@ -50,51 +50,69 @@ public class Board{
         StdDraw.setXscale(-1, 1);
         StdDraw.setYscale(-1, 1);
         StdDraw.enableDoubleBuffering();
-       // StdDraw.setScale();
-        while (gameStatus) {
+        // StdDraw.setScale();
+        while (hole.endOfGame(ball)) {
             StdDraw.clear(lawn);
             StdDraw.setPenRadius(0.05);
             StdDraw.setPenColor(StdDraw.BLACK);
-            StdDraw.point(0,-.75);
-            StdDraw.setPenColor(mat);
-            StdDraw.filledRectangle(-.35,.75,.35,.2);
-            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-
-
-            //ball.printCoordinates();
+            hole.draw();//hole
+            mat.draw();
+//            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+//            StdDraw.line(.6,0,-.6,0);
 
             wall.draw();
             wall.interact(ball);
+            ball.swing(ball);
             ball.move();
             ball.draw();
-            ball.swing(ball);
             StdDraw.show();
+
             //endOfGame();
             StdDraw.pause(15);
 
 
         }
+        hole.gameOverDraw();
+        System.out.print("end");
+        StdDraw.show();
+        //StdDraw.clear(lawn);
     }
 
-    public boolean endOfGame() {
-        if ( Math.abs(ball.getPosX() - 0) < .035  && Math.abs(ball.getPosY() - (-.75) ) < .035 ){
 
-            gameStatus = false;
-            System.out.println("Hole completed.");
-            StdDraw.clear(lawn);
-            StdDraw.setPenRadius(0.05);
-            StdDraw.setPenColor(StdDraw.BLACK);
-            StdDraw.point(0,-.75);
-            StdDraw.setPenColor(mat);
-            StdDraw.filledRectangle(-.35,.75,.35,.2);
-            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-            StdDraw.line(.6,0,-.6,0);
-            ball.gameOverDraw();
-        }
-        return gameStatus;
-    }
+//    public boolean endOfGame() {
+//        if ( Math.abs(ball.getPosX() - 0) < .035  && Math.abs(ball.getPosY() - (-.75) ) < .035 ){
+//
+//            gameStatus = false;
+//            System.out.println("Hole completed.");
+//            StdDraw.clear(lawn);
+//            StdDraw.setPenRadius(0.05);
+//            StdDraw.setPenColor(StdDraw.BLACK);
+//            StdDraw.point(ball.getHoleX(), ball.getHoleY());//hole
+//            StdDraw.setPenColor(mat);
+//            StdDraw.filledRectangle(-.35,.75,.35,.2);
+//            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+//            StdDraw.line(.6,0,-.6,0);
+//            ball.gameOverDraw();
+//
+//        }
+//        return gameStatus;
+//    }
 
-//    public void nextHole(int hole){
+//    public boolean returnGameStatus(){
+//        return gameStatus;
+//    }
+
+    public Color returnLawnColor() {return lawn;}
+
+
+
+
+
+
+
+
+
+    //    public void nextHole(int hole){
 //        if (hole == 1){
 //            StdDraw.clear(lawn);
 //            //complete this hole
