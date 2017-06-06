@@ -17,9 +17,11 @@ public class WaterTrap extends Wall {
 
         if (checkInside(b)){
             Point2D.Double p = new Point2D.Double();
-            b.setPos(p);
+            //b.setPos(p);
             b.setMotionY(0);
             b.setMotionY(0);
+            b.setPosX(b.getLastX());
+            b.setPosY(b.getLastY());
         }
     }
 

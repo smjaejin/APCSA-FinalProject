@@ -11,6 +11,7 @@ public class Ball {
     public double motionX, motionY;
     final double FRICTION, STOPPED;
     public double hX,hY;
+    public double lastX,lastY;
 
     public Ball() {
         motionX = 0.0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
@@ -52,6 +53,8 @@ public class Ball {
     public void swing(Ball b){
         double motX = 0, motY = 0;
         while(StdDraw.mousePressed() && (b.getMotionX()==0 && b.getMotionY() ==0)){
+            lastX=getPosX();
+            lastY=getPosY();
             motX = -(b.getMotionX() - (b.getPosX() - StdDraw.mouseX()));
             motY = -(b.getMotionY() - (b.getPosY() - StdDraw.mouseY()));
         }
@@ -98,6 +101,14 @@ public class Ball {
     public void setMotionY(double motionY) {
         this.motionY = motionY;
     }
+
+    public double getLastX() {
+        return lastX;
+    }
+    public double getLastY() {
+        return lastY;
+    }
+
 
     public void printCoordinates(){
         System.out.println(  "Position: (" + getPosX()+ "," + getPosY() + ")" );
