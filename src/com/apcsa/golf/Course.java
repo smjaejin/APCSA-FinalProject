@@ -21,35 +21,35 @@ public class Course {
             courseObjects.add(new Wall(0, -.75, .6, .08));
     }
 
-    public Course(int pos) {
-        if (pos == 0) {
-        courseObjects = new ArrayList();
-        b = new Ball(.75, .6);
-        courseObjects.add(new Mat(0, .6));
+    public Course(int i){
+        courseObjects = new ArrayList<Obstacle>();
+        b = new Ball(-.8, .8);
+        courseObjects.add(new Mat(-.9, .8));
         courseObjects.add(new Hole(.75, -.75));
-        courseObjects.add(new Wall(0, -.75, .6, .08));
-        }
-        else if (pos==1){
-            //create course 1
-        }
-        else if (pos==2){
-            //create course 2
-        }
-        else if (pos==3){
-            //create course 3
-        }
-        else if (pos==3){
-            //create course 4
-        }
-        else if (pos==5){
-            //create course 5
-        }
+        courseObjects.add(new SandPit(0,0,.65,.65));
+        courseObjects.add(new SandPit(.95,0,.05,1));
+        courseObjects.add(new SandPit(-.95,0,.05,1));
+        courseObjects.add(new SandPit(0,.95,1,.05));
+        courseObjects.add(new SandPit(0,-.95,1,.05));
+
     }
 
-
-
-    public Course(String i){
+    public Course(String s){
         courseObjects = new ArrayList<Obstacle>();
+        b = new Ball(-.8, .8);
+        courseObjects.add(new Hole(.8,0));
+        courseObjects.add(new Mat(-.9, .8));
+
+//        Ice ice;
+//        ice = new Ice(0,0,.5,.5);
+        //ice.setSlipperyness(1.255);
+        //courseObjects.add(new Ice(0,0,1,1));
+        //courseObjects.add(new Wall(0,));
+        courseObjects.add(new SoftWall(0,0.-95,.1,.05));
+        courseObjects.add(new SoftWall(.95,0,.05,1));
+        courseObjects.add(new SoftWall(-.95,0,.05,1));
+        courseObjects.add(new SoftWall(0,.95,1,.05));
+
 
     }
 
