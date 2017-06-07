@@ -9,12 +9,21 @@ public class Hole extends Obstacle{
     private double hX, hY;
     Color lawn;
     Color mat;
-    public boolean gameStatus = true;
+    boolean truefalse;
 
 
     public Hole(double hX, double hY){
         this.hX = hX;
         this.hY = hY;
+        trueFalse = true;
+    }
+
+    public double gethX() {
+        return hX;
+    }
+
+    public double gethY() {
+        return hY;
     }
 
     void draw(){
@@ -28,10 +37,11 @@ public class Hole extends Obstacle{
         StdDraw.filledCircle(hX, hY, 100);
     }
 
-    public boolean endOfGame(Ball ball) {
+
+    public void interact(Ball ball) {
         if ( Math.abs(ball.getPosX() - hX) < .035  && Math.abs(ball.getPosY() - (hY) ) < .035 ){
 
-            gameStatus = false;
+            trueFalse = false;
             System.out.println("Hole completed.");
             StdDraw.clear(lawn = new Color(46, 93, 0));
             StdDraw.setPenRadius(0.05);
@@ -42,9 +52,10 @@ public class Hole extends Obstacle{
             StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
             StdDraw.line(.6,0,-.6,0);
             gameOverDraw();
-
         }
-        return gameStatus;
     }
 
+    public boolean isTruefalse() {
+        return trueFalse;
+    }
 }

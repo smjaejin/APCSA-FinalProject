@@ -14,11 +14,8 @@ import java.awt.event.*;
  */
 public class Board{
     Color lawn;
-    Ball ball;
-    Wall wall;
-    Hole hole;
-    Mat mat;
-
+    Courses courses;
+    Course course;
     public static void main(String[] args) {
         new Board();
     }
@@ -33,14 +30,9 @@ public class Board{
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
         StdDraw.line(.6,0,-.6,0);
         StdDraw.setPenColor(Color.RED);
-        mat = new Mat(0, .6);
-        wall = new Wall(0,-.75,.6,.08);
-        hole = new Hole(.75,-.75);
-        ball = new Ball();
-        mat.assignBallStart(ball);
-        ball.draw();
-        hole.draw();
         StdDraw.show();
+        courses = new Courses();
+        course = courses.nextCourse();
         update();
 
     }
@@ -50,29 +42,30 @@ public class Board{
         StdDraw.setXscale(-1, 1);
         StdDraw.setYscale(-1, 1);
         StdDraw.enableDoubleBuffering();
-        // StdDraw.setScale();
-        while (hole.endOfGame(ball)) {
+        course.b.draw();
+        System.out.println(course.courseObjects.get(1).trueFalse);
+        while(course.courseObjects.get(1).trueFalse){
             StdDraw.clear(lawn);
-            StdDraw.setPenRadius(0.05);
-            StdDraw.setPenColor(StdDraw.BLACK);
-            hole.draw();//hole
-            mat.draw();
-//            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-//            StdDraw.line(.6,0,-.6,0);
-
-            wall.draw();
-            wall.interact(ball);
-            ball.swing(ball);
-            ball.move();
-            ball.draw();
+            course.b.move();
+            course.b.swing(course.b);
+            for(Obstacle j: course.courseObjects) {
+                j.draw();
+                j.interact(course.getBall());
+            }
+            course.b.draw();
             StdDraw.show();
-
-            //endOfGame();
-            StdDraw.pause(15);
-
-
+            StdDraw.pause(1);
         }
-        hole.gameOverDraw();
+//        while (hole.endOfGame(ball)) {
+//            ball.move();
+//            ball.draw();
+//            StdDraw.show();
+//
+//            //endOfGame();
+//            StdDraw.pause(1);
+//
+//
+//        }
         System.out.print("end");
         StdDraw.show();
         //StdDraw.clear(lawn);

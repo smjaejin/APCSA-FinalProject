@@ -13,6 +13,10 @@ public class Courses {
     public Courses(){
         holes = new ArrayList<Course>();
         holeNumber = -1;
+        holes.add(new Course());
+        holes.add(new Course(1));
+        holes.add(new Course("i"));
+        holes.add(new Course(2.0));
     }
 
     public Course nextCourse(){

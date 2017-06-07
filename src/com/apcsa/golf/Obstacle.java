@@ -7,7 +7,8 @@ package com.apcsa.golf;
  */
 public abstract class Obstacle {
 
-    public double x1, y1, halfWidth, halfHeight;
+    public double x1, y1;
+    boolean trueFalse;
 
     void draw() {
 

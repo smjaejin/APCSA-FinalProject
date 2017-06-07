@@ -10,16 +10,33 @@ import edu.princeton.cs.introcs.StdRandom;
 import java.util.ArrayList;
 public class Course {
 
-
-    //public ArrayList<Obstacle> courseObjects;
+    Ball b;
+    public ArrayList<Obstacle> courseObjects;
 
     public Course(){
-        //courseObjects = new ArrayList();
+        courseObjects = new ArrayList();
+        b = new Ball(.75,.6);
+        courseObjects.add(new Mat(0,.6));
+        courseObjects.add(new Hole(.75,-.75));
+        courseObjects.add(new Wall(0,-.75,.6,.08));
+    }
 
+    public Course(int i){
+        courseObjects = new ArrayList<Obstacle>();
 
     }
 
-    //StdRandom.uniform(-1, 1);
+    public Course(String i){
+        courseObjects = new ArrayList<Obstacle>();
 
+    }
 
+    public Course(double i){
+        courseObjects = new ArrayList<Obstacle>();
+
+    }
+
+    public Ball getBall(){
+        return b;
+    }
 }

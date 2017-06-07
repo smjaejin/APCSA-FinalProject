@@ -6,21 +6,20 @@ import edu.princeton.cs.introcs.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class Ball {
+public class Ball extends Obstacle{
     public double posX, posY, width, height, radius;
     public double motionX, motionY;
     final double FRICTION, STOPPED;
-    public double hX,hY;
     public double lastX,lastY;
 
-    public Ball() {
+    public Ball(double posX, double posY) {
         motionX = 0.0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
         motionY = 0.0;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
         radius = .02;
-        FRICTION = 1;//.989;
-        STOPPED = .0005;
-        hX = 0;
-        hY= -.75;
+        FRICTION = .9985;
+        STOPPED = .00005;
+        this.posX = posX;
+        this.posY = posY;
     }
 
     // move the ball one step
@@ -45,11 +44,6 @@ public class Ball {
         //StdDraw.filledCircle(.5,.5,.02);
     }
 
-    public void gameOverDraw(){
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.filledCircle(hX, hY, radius);
-    }
-
     public void swing(Ball b){
         double motX = 0, motY = 0;
         while(StdDraw.mousePressed() && (b.getMotionX()==0 && b.getMotionY() ==0)){
@@ -59,8 +53,8 @@ public class Ball {
             motY = -(b.getMotionY() - (b.getPosY() - StdDraw.mouseY()));
         }
         if(motX != 0 || motY != 0){
-            motionX = motX *.05;
-            motionY = motY *.05;
+            motionX = motX *.005;
+            motionY = motY *.005;
         }
     }
 
@@ -109,32 +103,11 @@ public class Ball {
         return lastY;
     }
 
-
     public void printCoordinates(){
         System.out.println(  "Position: (" + getPosX()+ "," + getPosY() + ")" );
     }
 
-    // test client
-    public static void main(String[] args) {
 
-        // create and initialize a ball
-        Ball b1 = new Ball();
-
-
-        // animate them
-        StdDraw.setXscale(-1.0, +1.0);
-        StdDraw.setYscale(-1.0, +1.0);
-        StdDraw.enableDoubleBuffering();
-
-        while (true) {
-            StdDraw.clear(StdDraw.GRAY);
-            StdDraw.setPenColor(StdDraw.BLACK);
-            b1.move();
-            b1.draw();
-            StdDraw.show();
-            StdDraw.pause(20);
-        }
-    }
 }
 
 

@@ -20,11 +20,4 @@ public class Mat extends Obstacle {
         StdDraw.setPenColor(new Color(160, 112, 70));
         StdDraw.filledRectangle(mX, mY, .3, .2);
     }
-
-    public void assignBallStart(Ball ball){
-        ball.setPosX(mX);
-        ball.setPosY(mY);
-    }
-
-
 }
