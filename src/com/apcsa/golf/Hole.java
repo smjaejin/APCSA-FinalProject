@@ -39,7 +39,7 @@ public class Hole extends Obstacle{
         System.out.print("endDraw");
         StdDraw.setPenColor(StdDraw.WHITE);
         StdDraw.pause(25);
-        StdDraw.text(0,0, "Hole Completed. Press enter for the next course");
+        StdDraw.text(0,0, "Hole Completed. Press Space for the next course");
         StdDraw.show();
         waitForPress();
     }
@@ -47,7 +47,7 @@ public class Hole extends Obstacle{
         trueFalse = true;
         boolean pause = false;
         while(!pause){
-            if (StdDraw.mousePressed())
+            if (StdDraw.hasNextKeyTyped() && StdDraw.nextKeyTyped() == ' ')
                 pause=true;
         }
     }

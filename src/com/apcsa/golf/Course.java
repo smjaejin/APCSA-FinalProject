@@ -17,10 +17,10 @@ public class Course {
      * */
     public Course() {
         courseObjects = new ArrayList();
-        b = new Ball(.75, .6);
+        b = new Ball(0, .7);
         courseObjects.add(new Hole(.75, -.75));
         courseObjects.add(new Mat(0, .7));
-        courseObjects.add(new Wall(0, -.75, .6, .08));
+        courseObjects.add(new Wall(0, 0, .6, .08));
     }
     /**
      *  Creates the second course

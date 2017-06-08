@@ -18,7 +18,7 @@ public class Ball extends Obstacle{
         motionX = 0.0;
         motionY = 0.0;
         radius = .02;
-        FRICTION = .997;
+        FRICTION = .9977;
         STOPPED = .0001;
         this.posX = posX;
         this.posY = posY;

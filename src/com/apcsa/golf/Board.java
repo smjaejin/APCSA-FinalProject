@@ -44,9 +44,9 @@ public class Board{
         StdDraw.setPenColor(Color.WHITE);
         StdDraw.filledRectangle(0,0,.5,.2);
         StdDraw.setPenColor(Color.BLACK);
-        StdDraw.text(0,0, "Click to Start");
+        StdDraw.text(0,0, "Press Space to Start");
         StdDraw.show();
-        waitForPress();
+        waitForEnter();
         course.b.draw();
         while (!course.courseObjects.get(0).trueFalse) {
             StdDraw.clear(lawn);
@@ -66,10 +66,10 @@ public class Board{
         }
     }
 
-    public void waitForPress(){
+    public void waitForEnter(){
         boolean pause = false;
         while(!pause){
-            if (StdDraw.mousePressed())
+            if (StdDraw.hasNextKeyTyped() && StdDraw.nextKeyTyped()==' ')
                 pause=true;
         }
     }
