@@ -39,11 +39,13 @@ public class Course {
      * */
     public Course(String i){
         courseObjects = new ArrayList();
-        b = new Ball(.5,.6);
+        b = new Ball(.7,.7);
         courseObjects.add(new Hole(-.6, -.6));
-        courseObjects.add(new Mat(.5, .6));
-        courseObjects.add(new Ice(.1,0.5,1,1));
-        courseObjects.add(new Ice(.5,0.1,1,1));
+        courseObjects.add(new Mat(.6, .7));
+        courseObjects.add(new Ice(.1,0,1,.5));
+        courseObjects.add(new Ice(0,0.1,.5,1));
+        courseObjects.add(new Ice(.7,-.75,.2,.25));
+        courseObjects.add(new Ice(-.75,.7,.25,.2));
         courseObjects.add(new WaterTrap(0,-0.95,1,.05));
         courseObjects.add(new WaterTrap(.95,0,.05,1));//this one acts as a wall for some reason
         courseObjects.add(new WaterTrap(-.95,0,.05,1));
