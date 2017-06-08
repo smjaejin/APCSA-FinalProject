@@ -36,10 +36,9 @@ public class Hole extends Obstacle{
 
     public void gameOverDraw() {
         StdDraw.clear(lawn);
-        System.out.print("endDraw");
         StdDraw.setPenColor(StdDraw.WHITE);
         StdDraw.pause(25);
-        StdDraw.text(0,0, "Hole Completed. Press Space for the next course");
+        StdDraw.text(0,0, "Hole completed. Press Space for the next course.");
         StdDraw.show();
         waitForPress();
     }
@@ -55,7 +54,6 @@ public class Hole extends Obstacle{
 
     public void interact(Ball ball) {
         if ( Math.abs(ball.getPosX() - hX) < .035  && Math.abs(ball.getPosY() - (hY) ) < .035 ){
-            System.out.println("Hole completed.");
             ball.setPos(new Point2D.Double(hX,hY));
             ball.setMotionX(0);
             ball.setMotionY(0);

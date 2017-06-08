@@ -42,7 +42,6 @@ public class Board{
         StdDraw.setYscale(-1, 1);
         StdDraw.enableDoubleBuffering();
         StdDraw.setPenColor(Color.WHITE);
-        StdDraw.filledRectangle(0,0,.5,.2);
         StdDraw.setPenColor(Color.BLACK);
         StdDraw.text(0,0, "Press Space to Start");
         StdDraw.show();

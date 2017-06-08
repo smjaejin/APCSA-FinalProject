@@ -7,17 +7,18 @@ package com.apcsa.golf;
 import edu.princeton.cs.introcs.StdDraw;
 import edu.princeton.cs.introcs.StdRandom;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 public class Course {
 
-    Ball b;
+    Ball b = new Ball(0,.7);
+    int swingC;
     public ArrayList<Obstacle> courseObjects;
     /**
      *  Creates the first course
      * */
     public Course() {
         courseObjects = new ArrayList();
-        b = new Ball(0, .7);
         courseObjects.add(new Hole(.75, -.75));
         courseObjects.add(new Mat(0, .7));
         courseObjects.add(new Wall(0, 0, .6, .08));
@@ -27,7 +28,7 @@ public class Course {
      * */
     public Course(int i){// for some reason there is an invisible wall or something in this course
         courseObjects = new ArrayList<Obstacle>();
-        b = new Ball(-.6, .7);
+        b.setPos(new Point2D.Double(-.6,.7));
         courseObjects.add(new Hole(.8,-.8));
         courseObjects.add(new Mat(-.6, .7));
         courseObjects.add(new Wall(0,0,.5,.05));
@@ -39,7 +40,7 @@ public class Course {
      * */
     public Course(String i){
         courseObjects = new ArrayList();
-        b = new Ball(.7,.7);
+        b.setPos(new Point2D.Double(.7,.7));
         courseObjects.add(new Hole(-.6, -.6));
         courseObjects.add(new Mat(.6, .7));
         courseObjects.add(new Ice(.1,0,1,.5));
@@ -61,7 +62,8 @@ public class Course {
      * */
     public Course(double i){
         courseObjects = new ArrayList<Obstacle>();
-
+        b.setPos(new Point2D.Double(0,0));
+        courseObjects.add(new EndScreen((int)i));
     }
     /**
      * Returns ball
