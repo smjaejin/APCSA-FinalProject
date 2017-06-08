@@ -9,22 +9,18 @@ import java.awt.geom.Point2D;
  * Created by apcsaper5 on 5/24/17.
  */
 public class WaterTrap extends Wall {
-
     Color blue;
-
-    public WaterTrap(double x1, double y1, double halfWidth, double halfHeight) {
-        super(x1,y1,halfWidth,halfHeight);
+    public WaterTrap(double xB, double yB, double halfWidth, double halfHeight) {
+        super(xB,yB,halfWidth,halfHeight);
         blue = new Color(0,105,148);
     }
-
     void draw() {
         StdDraw.setPenColor(blue);
-        StdDraw.filledRectangle(x1, y1, halfWidth, halfHeight);
+        StdDraw.filledRectangle(xB, yB, halfWidth, halfHeight);
     }
-
     void interact(Ball b) {
         if (checkInside(b)){
-            Point2D.Double p = new Point2D.Double();
+            //Point2D.Double p = new Point2D.Double();
             //b.setPos(p);
             b.setMotionX(0);
             b.setMotionY(0);
@@ -32,5 +28,4 @@ public class WaterTrap extends Wall {
             b.setPosY(b.getLastY());
         }
     }
-
 }

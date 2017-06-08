@@ -10,23 +10,20 @@ import java.awt.*;
 
 public class SoftWall extends Wall {
 
-    public double x1, y1, halfWidth, halfHeight;
+    public double xB, yB, halfWidth, halfHeight;
 
     public Color color=Color.MAGENTA;
 
-    public SoftWall(double x1, double y1, double halfWidth, double halfHeight) {
-        super(x1,y1,halfWidth,halfHeight);
-    }
-
-    void draw() {
-        StdDraw.setPenColor(color);
-        StdDraw.filledRectangle(x1,y1, halfWidth, halfHeight);
+    public SoftWall(double xB, double yB, double halfWidth, double halfHeight) {
+        super(xB,yB,halfWidth,halfHeight);
     }
 
     void interact(Ball b){
-        if (checkBottom(b)||checkLeft(b)||checkRight(b)||checkTop(b)){
+        if (checkInside(b)){
             b.setMotionX(0.0);
             b.setMotionY(0.0);
+            b.setPosX(b.getPosX());
+            b.setPosY(b.getPosY());
         }
     }
 }
