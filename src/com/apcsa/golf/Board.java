@@ -54,6 +54,7 @@ public class Board{
             course.b.swing(course.b);
             for (Obstacle j : course.courseObjects) {
                 j.draw();
+                course.b.draw();
                 j.interact(course.getBall());
             }
             course.b.draw();

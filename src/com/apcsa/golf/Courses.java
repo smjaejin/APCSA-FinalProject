@@ -21,6 +21,9 @@ public class Courses {
 
     public Course nextCourse(){
         holeNumber++;
+        if(holeNumber>holes.size()){
+            return new Course();
+        }
         return holes.get(holeNumber);
     }
 

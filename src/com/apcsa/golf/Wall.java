@@ -13,30 +13,20 @@ public class Wall extends Obstacle {
 
     public double xB, yB, halfWidth, halfHeight;
 
-    Color color;
-
     public Wall(double xB, double yB, double halfWidth, double halfHeight) {
         this.xB = xB;
         this.yB = yB;
         this.halfWidth = halfWidth;
         this.halfHeight = halfHeight;
-        color = Color.GRAY;
     }
 
     void draw() {
-        StdDraw.setPenColor(color);
+        StdDraw.setPenColor(Color.GRAY);
         StdDraw.filledRectangle(xB, yB, halfWidth, halfHeight);
     }
 
 
     void interact(Ball b) {
-        //old collisons just in case
-//        if ((b.getPosX() >= -halfWidth-.02 && b.getPosX() <=halfWidth+.02) && b.getPosY() >= -halfHeight-.02 && b.getPosY() <= halfHeight+.02 && Math.abs(b.getPosY())>=xB+halfHeight){
-//            b.setMotionY(b.getMotionY()*-1);
-//        }
-//        if ((b.getPosX() >= -halfWidth-.02 && b.getPosX() <=halfWidth+.02) && b.getPosY() >= -halfHeight-.02 && b.getPosY() <= halfHeight+.02 && Math.abs(b.getPosX())>=xB+halfWidth){
-//            b.setMotionX(b.getMotionX()*-1);
-//        }
         double x1 = b.nextPosition().getX();
         double y1 = b.nextPosition().getY();
         double slopeI = b.getMotionX() / b.getMotionY();
@@ -75,6 +65,33 @@ public class Wall extends Obstacle {
             System.out.println("left");
             b.setMotionX(b.getMotionX() * -1);
         }
+    }
 
+    boolean checkTop(Ball b) {
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
+        return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && y1 >= yB + halfHeight;
+    }
+
+    boolean checkBottom(Ball b) {
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
+        return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && y1 <= yB - halfHeight;
+    }
+    boolean checkRight(Ball b) {
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
+        return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && x1 >= xB + halfWidth;
+    }
+
+    boolean checkLeft(Ball b) {
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
+        return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB)) && x1 <= xB - halfWidth;
+    }
+    boolean checkInside(Ball b){
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
+        return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB));
     }
 }

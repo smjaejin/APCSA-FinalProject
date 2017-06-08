@@ -18,7 +18,7 @@ public class Ball extends Obstacle{
         motionX = 0.0;
         motionY = 0.0;
         radius = .02;
-        FRICTION = .9984;
+        FRICTION = .997;
         STOPPED = .0001;
         this.posX = posX;
         this.posY = posY;
@@ -76,15 +76,6 @@ public class Ball extends Obstacle{
     public double getPosX(){
         return posX;
     }
-
-    public void setPosX(double posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(double posY) {
-        this.posY = posY;
-    }
-
     public double getPosY(){
         return posY;
     }
@@ -94,20 +85,18 @@ public class Ball extends Obstacle{
     public double getMotionY() {
         return motionY;
     }
+    public void setPosX(double posX) {
+        this.posX = posX;
+    }
+    public void setPosY(double posY) {
+        this.posY = posY;
+    }
     public void setMotionX(double motionX) {
         this.motionX = motionX;
     }
     public void setMotionY(double motionY) {
         this.motionY = motionY;
     }
-
-    public double getLastX() {
-        return lastX;
-    }
-    public double getLastY() {
-        return lastY;
-    }
-
     public void printCoordinates(){
         System.out.println(  "Position: (" + getPosX()+ "," + getPosY() + ")" );
     }

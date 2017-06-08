@@ -8,24 +8,34 @@ import java.awt.geom.Point2D;
  * if the ball enters the WaterTrap, it is moved to the location of the last swing, and movement is stopped
  * Created by apcsaper5 on 5/24/17.
  */
-public class WaterTrap extends Wall {
+public class WaterTrap extends Obstacle {
+
     Color blue;
+    double xB,yB,halfWidth,halfHeight;
+
     public WaterTrap(double xB, double yB, double halfWidth, double halfHeight) {
-        super(xB,yB,halfWidth,halfHeight);
-        blue = new Color(0,105,148);
+        this.blue = Color.BLUE;
+        this.xB = xB;
+        this.yB = yB;
+        this.halfWidth = halfWidth;
+        this.halfHeight = halfHeight;
     }
+
     void draw() {
         StdDraw.setPenColor(blue);
         StdDraw.filledRectangle(xB, yB, halfWidth, halfHeight);
     }
     void interact(Ball b) {
         if (checkInside(b)){
-            //Point2D.Double p = new Point2D.Double();
-            //b.setPos(p);
+            b.setPos(new Point2D.Double(b.lastX,b.lastY));
             b.setMotionX(0);
             b.setMotionY(0);
-            b.setPosX(b.getLastX());
-            b.setPosY(b.getLastY());
         }
+    }
+
+    boolean checkInside(Ball b){
+        double x1 = b.nextPosition().getX();
+        double y1 = b.nextPosition().getY();
+        return ((x1 >= -halfWidth - b.radius + xB && x1 <= halfWidth + b.radius + xB) && (y1 >= -halfHeight - b.radius + yB && y1 <= halfHeight + b.radius + yB));
     }
 }

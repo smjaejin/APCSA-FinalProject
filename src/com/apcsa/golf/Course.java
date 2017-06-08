@@ -13,38 +13,35 @@ public class Course {
     Ball b;
     public ArrayList<Obstacle> courseObjects;
     /**
-     *creates course number 1
+     *  Creates the first course
      * */
     public Course() {
         courseObjects = new ArrayList();
         b = new Ball(.75, .6);
-        courseObjects.add(new Mat(0, .6));
         courseObjects.add(new Hole(.75, -.75));
+        courseObjects.add(new Mat(0, .7));
         courseObjects.add(new Wall(0, -.75, .6, .08));
     }
     /**
-     *  creates ascociated course number 2
+     *  Creates the second course
      * */
-    public Course(int i){// for some reason there is an invisible wall or somthing in this course
+    public Course(int i){// for some reason there is an invisible wall or something in this course
         courseObjects = new ArrayList<Obstacle>();
-        b = new Ball(-.8, .8);
-        courseObjects.add(new Mat(-.9, .8));
-        courseObjects.add(new Hole(.75, -.75));
-        courseObjects.add(new SandPit(0,0,.65,.65));
-        courseObjects.add(new SandPit(.95,0,.05,1));//i might also want to change these to water later
-        courseObjects.add(new SandPit(-.95,0,.05,1));
-        courseObjects.add(new SandPit(0,.95,1,.05));
-        courseObjects.add(new SandPit(0,-.95,1,.05));
-
+        b = new Ball(-.6, .7);
+        courseObjects.add(new Hole(.8,-.8));
+        courseObjects.add(new Mat(-.6, .7));
+        courseObjects.add(new Wall(0,0,.5,.05));
+        courseObjects.add(new SandPit(-.75,0,.15,.05));
+        courseObjects.add(new SandPit( .75,0,.15,.05));
     }
     /**
-     *  creates associated course number 3
+     *  Creates the third course
      * */
     public Course(String i){
         courseObjects = new ArrayList();
-        b = new Ball(.75, .6);
-        courseObjects.add(new Mat(9, .6));
+        b = new Ball(.5,.6);
         courseObjects.add(new Hole(-.6, -.6));
+        courseObjects.add(new Mat(.5, .6));
         courseObjects.add(new Ice(.1,0.5,1,1));
         courseObjects.add(new Ice(.5,0.1,1,1));
         courseObjects.add(new WaterTrap(0,-0.95,1,.05));
@@ -57,15 +54,15 @@ public class Course {
         courseObjects.add(new Wall(-.65,-.9,.25,.015));
 
     }
-//    /**
-//     *  creates
-//     * */
-//    public Course(double i){
-//        courseObjects = new ArrayList<Obstacle>();
-//
-//    }
     /**
-     * returns ball
+     *  creates
+     * */
+    public Course(double i){
+        courseObjects = new ArrayList<Obstacle>();
+
+    }
+    /**
+     * Returns ball
      * */
     public Ball getBall(){
         return b;
