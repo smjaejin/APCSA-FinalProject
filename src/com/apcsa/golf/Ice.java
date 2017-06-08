@@ -26,8 +26,8 @@ public class Ice extends Wall {
 
     void interact(Ball b) {
         if (checkInside(b)) {
-            b.setMotionY(b.getMotionY() * 1.011);
-            b.setMotionX(b.getMotionX() * 1.011);
+            b.setMotionY(b.getMotionY() / .9984);
+            b.setMotionX(b.getMotionX() / .9984);
         }
     }
 

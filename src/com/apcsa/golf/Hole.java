@@ -2,20 +2,22 @@ package com.apcsa.golf;
 
 import edu.princeton.cs.introcs.StdDraw;
 import java.awt.*;
+import java.awt.geom.Point2D;
+
 /**
  * Created by apcsaper5 on 5/31/17.
  */
 public class Hole extends Obstacle{
     private double hX, hY;
     Color lawn;
-    Color mat;
     boolean truefalse;
 
 
     public Hole(double hX, double hY){
         this.hX = hX;
         this.hY = hY;
-        trueFalse = true;
+        trueFalse = false;
+        lawn = new Color(46, 93, 0);
     }
 
     public double gethX() {
@@ -33,24 +35,31 @@ public class Hole extends Obstacle{
     }
 
     public void gameOverDraw() {
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.filledCircle(hX, hY, 100);
+        StdDraw.clear(lawn);
+        System.out.print("endDraw");
+        StdDraw.setPenColor(StdDraw.WHITE);
+        StdDraw.pause(25);
+
+        StdDraw.text(0,0, "Hole Completed. Click for next course");
+        StdDraw.show();
+        waitForPress();
+    }
+    public void waitForPress(){
+        trueFalse = true;
+        boolean pause = false;
+        while(!pause){
+            if (StdDraw.mousePressed())
+                pause=true;
+        }
     }
 
 
     public void interact(Ball ball) {
         if ( Math.abs(ball.getPosX() - hX) < .035  && Math.abs(ball.getPosY() - (hY) ) < .035 ){
-
-            trueFalse = false;
             System.out.println("Hole completed.");
-            StdDraw.clear(lawn = new Color(46, 93, 0));
-            StdDraw.setPenRadius(0.05);
-            StdDraw.setPenColor(StdDraw.BLACK);
-            draw();//hole
-            StdDraw.setPenColor(mat);
-            StdDraw.filledRectangle(-.35,.75,.35,.2);
-            StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-            StdDraw.line(.6,0,-.6,0);
+            ball.setPos(new Point2D.Double(hX,hY));
+            ball.setMotionX(0);
+            ball.setMotionY(0);
             gameOverDraw();
         }
     }
