@@ -11,13 +11,15 @@ public class Ball extends Obstacle{
     public double motionX, motionY;
     final double FRICTION, STOPPED;
     public double lastX,lastY;
+    int swings;
 
     public Ball(double posX, double posY) {
-        motionX = 0.0;//StdRandom.uniform(-0.015, 0.015);//assigns a random motion
-        motionY = 0.0;//StdRandom.uniform(-0.015, 0.015);//values are small so its smooth
+        swings = 0;
+        motionX = 0.0;
+        motionY = 0.0;
         radius = .02;
-        FRICTION = .9985;
-        STOPPED = .00005;
+        FRICTION = .9984;
+        STOPPED = .0001;
         this.posX = posX;
         this.posY = posY;
     }
@@ -41,6 +43,8 @@ public class Ball extends Obstacle{
     public void draw() {
         StdDraw.setPenColor(StdDraw.WHITE);
         StdDraw.filledCircle(posX,posY, radius);
+        StdDraw.setPenColor(Color.BLACK);
+        StdDraw.text(.8,.8,""+swings);
         //StdDraw.filledCircle(.5,.5,.02);
     }
 
@@ -55,6 +59,7 @@ public class Ball extends Obstacle{
         if(motX != 0 || motY != 0){
             motionX = motX *.005;
             motionY = motY *.005;
+            swings++;
         }
     }
 
@@ -106,7 +111,6 @@ public class Ball extends Obstacle{
     public void printCoordinates(){
         System.out.println(  "Position: (" + getPosX()+ "," + getPosY() + ")" );
     }
-
 
 }
 
