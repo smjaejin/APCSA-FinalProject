@@ -12,7 +12,9 @@ public class Course {
 
     Ball b;
     public ArrayList<Obstacle> courseObjects;
-
+    /**
+     *creates course number 1
+     * */
     public Course() {
             courseObjects = new ArrayList();
             b = new Ball(.75, .6);
@@ -20,7 +22,9 @@ public class Course {
             courseObjects.add(new Hole(.75, -.75));
             courseObjects.add(new Wall(0, -.75, .6, .08));
     }
-
+    /**
+     *  creates ascociated course number 2
+     * */
     public Course(int i){// for some reason there is an invisible wall or somthing in this course
         courseObjects = new ArrayList<Obstacle>();
         b = new Ball(-.8, .8);
@@ -33,7 +37,9 @@ public class Course {
         courseObjects.add(new SandPit(0,-.95,1,.05));
 
     }
-
+    /**
+     *  creates associated course number 3
+     * */
     public Course(String i){
         courseObjects = new ArrayList();
         b = new Ball(.75, .6);
@@ -51,12 +57,16 @@ public class Course {
         courseObjects.add(new Wall(-.65,-.9,.25,.015));
 
     }
-
-    public Course(double i){
-        courseObjects = new ArrayList<Obstacle>();
-
-    }
-
+//    /**
+//     *  creates
+//     * */
+//    public Course(double i){
+//        courseObjects = new ArrayList<Obstacle>();
+//
+//    }
+    /**
+     * returns ball
+     * */
     public Ball getBall(){
         return b;
     }
