@@ -21,7 +21,6 @@ public class Wall extends Obstacle {
         this.halfWidth = halfWidth;
         this.halfHeight = halfHeight;
         color = Color.GRAY;
-
     }
 
     void draw() {

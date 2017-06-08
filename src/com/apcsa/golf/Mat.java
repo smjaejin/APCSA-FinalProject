@@ -12,7 +12,6 @@ public class Mat extends Obstacle {
     public Mat(double mX, double mY){
         this.mX = mX;
         this.mY = mY;
-
     }
 
     void draw() {
